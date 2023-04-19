@@ -62,3 +62,10 @@ class User(AbstractUser):
     # def revenue(self):
     #     orders = Order.objects.filter(user_id=self.pk, complete=True)
     #     return sum(o.ambassador_revenue for o in orders)
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(max_length=500, null=True)
+    image = models.CharField(max_length=255)
+    content = models.TextField(max_length=5000, null=True)
