@@ -38,24 +38,24 @@ class ArticleGenericAPIView(
 
     def post(self, request):
         response = self.create(request)
-        # for key in cache.keys('*'):
-        #     if 'products_frontend' in key:
-        #         cache.delete(key)
-        # cache.delete('products_backend')
+        for key in cache.keys('*'):
+            if 'articles_frontend' in key:
+                cache.delete(key)
+        cache.delete('articles_backend')
         return response
 
     def put(self, request, pk=None):
         response = self.partial_update(request, pk)
-        # for key in cache.keys('*'):
-        #     if 'products_frontend' in key:
-        #         cache.delete(key)
-        # cache.delete('products_backend')
+        for key in cache.keys('*'):
+            if 'articles_frontend' in key:
+                cache.delete(key)
+        cache.delete('articles_backend')
         return response
 
     def delete(self, request, pk=None):
         response = self.destroy(request, pk)
-        # for key in cache.keys('*'):
-        #     if 'products_frontend' in key:
-        #         cache.delete(key)
-        # cache.delete('products_backend')
+        for key in cache.keys('*'):
+            if 'articles_frontend' in key:
+                cache.delete(key)
+        cache.delete('articles_backend')
         return response
