@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import User
+from .models import User, Article
 
 
 class SuperUser(UserAdmin):
@@ -9,3 +9,4 @@ class SuperUser(UserAdmin):
 
 
 admin.site.register(User, SuperUser)
+admin.site.register(Article)
