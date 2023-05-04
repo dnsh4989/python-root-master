@@ -13,18 +13,22 @@ from .serializer import ArticleSerializer
 from core.models import Article, User
 from django.core.cache import cache
 
+class ArticleByIdAPIView(APIView):
+    def get(self, _, id=None):
+        article = Article.objects.filter(id=id)
+        serializer = ArticleSerializer(article, many=True)
+        return Response(serializer.data)
+
 
 class ArticlesFrontendAPIView(APIView):
     @method_decorator(cache_page(60 * 60 * 2, key_prefix='articles_frontend'))
     def get(self, _):
-        time.sleep(2)
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
 
 
 class ArticlesBackendAPIView(APIView):
-
     def get(self, request):
         articles = cache.get('articles_backend')
         if not articles:

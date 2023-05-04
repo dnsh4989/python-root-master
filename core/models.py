@@ -68,4 +68,4 @@ class Article(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=500, null=True)
     image = models.FileField(upload_to='media/')
-    content = models.TextField(max_length=5000, null=True)
+    content = models.TextField(max_length=10000, null=True)
