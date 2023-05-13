@@ -21,10 +21,10 @@ class ArticleByIdAPIView(APIView):
 
 
 class ArticlesFrontendAPIView(APIView):
-    @method_decorator(cache_page(60 * 60 * 2, key_prefix='articles_frontend'))
     def get(self, _):
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
+        print('articles')
         return Response(serializer.data)
 
 
