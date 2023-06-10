@@ -69,5 +69,5 @@ class Article(models.Model):
     description = models.TextField(max_length=500, null=True)
     image = models.FileField(upload_to='media/')
     thumbnail = models.FileField(upload_to='media/')
-    content = models.TextField(max_length=10000, null=True)
+    content = models.TextField(max_length=20000, null=True)
     tags = models.TextField(max_length=200, null=True)
